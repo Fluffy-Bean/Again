@@ -5,24 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class endTrigger : MonoBehaviour
 {
-
-    private void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.gameObject.CompareTag("Player"))
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            SceneManager.LoadScene("end");
-        }    
+      SceneManager.LoadScene("end");
+      SceneManager.UnloadSceneAsync("game");
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  }
 }

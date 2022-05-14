@@ -8,31 +8,31 @@ using UnityEngine.SceneManagement;
 public class timerText : MonoBehaviour
 {
 
-    TextMeshProUGUI textBox;
+  TextMeshProUGUI textBox;
 
-    public float time = 0;
-    protected float Timer;
-    public int delayAmount = 1;
+  public float time = 0;
+  protected float Timer;
+  public int delayAmount = 1;
 
-    void Start()
+  void Start()
+  {
+    textBox = GetComponent<TextMeshProUGUI>();
+    textBox.SetText("0");
+  }
+
+  void Update()
+  {
+    if (SceneManager.GetActiveScene().name == "game")
     {
-        textBox = GetComponent<TextMeshProUGUI>();
-        textBox.SetText("0");
-    }
+      Timer += Time.deltaTime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (SceneManager.GetActiveScene().name == "game")
-        {
-            Timer += Time.deltaTime;
-
-            if (Timer >= delayAmount)
-            {
-                Timer = 0f;
-                time++;
-                textBox.SetText("{0}", time);
-            }
-        }
+      if (Timer >= delayAmount)
+      {
+        Timer = 0f;
+        time++;
+        textBox.SetText("{0}s", time);
+        PlayerPrefs.SetFloat("timeScore",time);
+      }
     }
+  }
 }
