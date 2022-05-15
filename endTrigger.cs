@@ -10,7 +10,6 @@ public class endTrigger : MonoBehaviour
     if (other.gameObject.CompareTag("Player"))
     {
       SceneManager.LoadScene("end");
-      SceneManager.UnloadSceneAsync("game");
     }
   }
 }
