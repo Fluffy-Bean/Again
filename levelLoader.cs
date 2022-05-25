@@ -12,5 +12,6 @@ public class levelLoader : MonoBehaviour
       PlayerPrefs.SetFloat("lowestTime",9999f);
     }
     SceneManager.LoadScene("game");
+    Time.timeScale = 1f;
   }
 }
